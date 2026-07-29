@@ -1,0 +1,8 @@
+
+matplotlib
+pandas
+ipython
+seaborn
+plotly
+missingno
+phik
