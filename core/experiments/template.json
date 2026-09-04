@@ -1,0 +1,49 @@
+{
+  "experiment_name": "experiment_name",
+
+  "raw_datasets": {
+    "split": "predefined | user_defined",
+    "train": {
+      "dataset_name": "path/to/train.csv"
+    },
+    "test": {
+      "dataset_name": "path/to/test.csv"
+    }
+  },
+
+  "processed_datasets": {
+    "train": {
+      "name": "train.parquet"
+    },
+    "test": {
+      "name": "test.parquet"
+    },
+    "structure": {
+      "target": "",
+      "identifiers": [],
+      "numerical_features": [],
+      "categorical_features": [],
+      "ordinal_features": [],
+      "binary_features": []
+    }
+  },
+
+  "cross_validation": {
+    "strategy": "StratifiedKFold | KFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42
+  },
+
+  "training": {
+    "batch_size": 32,
+    "epochs": 20,
+    "learning_rate": 0.001,
+    "device": "cpu"
+  },
+
+  "model": {
+    "name": "model_name",
+    "hidden_dim": 64
+  }
+}

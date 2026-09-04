@@ -1,0 +1,71 @@
+{
+  "experiment_name": "model_comparison_v1",
+  "description": "сравнение семейств моделей на базовом наборе признаков",
+  "created_at": "2026-08-20",
+
+  "raw_datasets": {
+    "split": "predefined",
+    "train": "train.csv",
+    "test": "test.csv"
+  },
+
+  "cleaned_datasets": {
+    "split": "predefined",
+    "train": "train.csv",
+    "test": "test.csv"
+  },
+
+  "structure": {
+    "target": "survived",
+    "identifiers": [
+      "passenger_id"
+    ],
+    "numerical_features": [
+      "age",
+      "fare",
+      "family_size",
+      "female_count",
+      "male_count",
+      "child_count",
+      "ticket_group_size",
+      "same_importance_relatives",
+      "high_importance_relatives"
+    ],
+    "categorical_features": [
+      "sex",
+      "family_type",
+      "embarked"
+    ],
+    "ordinal_features": [
+      "category_significance"
+    ],
+    "binary_features": []
+  },
+
+  "cross_validation": {
+    "strategy": "StratifiedKFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42
+  },
+
+  "training": {
+    "batch_size": 32,
+    "epochs": 20,
+    "learning_rate": 0.001,
+    "device": "cpu"
+  },
+
+  "models": [
+    "logistic",
+    "logistic_l1",
+    "logistic_l2",
+    "elastic_net",
+    "knn",
+    "decision_tree",
+    "random_forest",
+    "catboost",
+    "lightgbm",
+    "xgboost"
+  ]
+}
