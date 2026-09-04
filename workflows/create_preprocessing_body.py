@@ -9,13 +9,13 @@ from settings import (
     FULL_DATA_PROCESSING_NOTEBOOK,
 )
 
-from src.research.core.notebook_template.creator import NotebookCreator
+from notebooks.creator import NotebookCreator
 
-from src.research.core.notebook_template.notebook_spec import (
+from notebooks.registration import (
     FULL_RESEARCH_STATE_2,
 )
 
-class PreprocessingBodyPipeline:
+class ResearchNotebooksBodyBuilder:
     def __init__(self):
         self.config: Dict[str, Any] = self._load_config()
 
@@ -51,7 +51,7 @@ class PreprocessingBodyPipeline:
         if not FULL_DATA_PROCESSING_NOTEBOOK.exists():
             raise FileNotFoundError(
                 "[NOTEBOOK ERROR] stage 1 notebook not found. "
-                "Activate /pipelines/create_research_env.py"
+                "Activate /workflows/create_research_env.py"
             )
 
         # ноутбук не пустой
@@ -60,7 +60,7 @@ class PreprocessingBodyPipeline:
 
         if "cells" not in nb or len(nb["cells"]) == 0:
             raise ValueError(
-                "[NOTEBOOK ERROR] Start only /pipelines/create_research_env.py"
+                "[NOTEBOOK ERROR] Start only /workflows/create_research_env.py"
             )
 
     def _create_body_for_full_data_processing_notebook(
