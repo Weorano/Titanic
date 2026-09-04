@@ -1,10 +1,10 @@
 import textwrap
 
 from .template import SectionCommand
-from ..context import NotebookContext
-from ...researchers_tools.bootstrap import Bootstrap
-from ..structural_elements import Templates
-from ..structural_elements.jupyter_cell import JupyterCellCreator
+from notebooks.context import NotebookContext
+from researchers_tools.bootstrap import Bootstrap
+from notebooks.templates.structural_elements import Templates
+from notebooks.templates.structural_elements.jupyter_cell import JupyterCellCreator
 
 
 class BootstrapSection(SectionCommand):
@@ -74,15 +74,15 @@ class BootstrapSection(SectionCommand):
                         '*Переименуем столбцы таблиц под описанную выше структуру.*'
                     ),
                     JupyterCellCreator.create_code_cell(
-                        'data.head(0)'
+                        'overview.py.head(0)'
                     ),
                     JupyterCellCreator.create_code_cell(
                         textwrap.dedent("""
-                            data = data.rename(columns={
+                            overview.py = overview.py.rename(columns={
                                 'Начало нагрева дугой': 'start_time',
                             })
                         
-                            data.head(0)
+                            overview.py.head(0)
                         """).strip()
                     )
                 ]

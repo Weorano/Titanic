@@ -19,7 +19,7 @@ class Bootstrap:
             from phik import phik_matrix
             
             # Обёртки для диаграмм
-            from src.research.core.researchers_tools import (
+            from research.core.researchers_tools import (
                 custom_pie_chart,
                 custom_hist_with_boxplot
             )
@@ -32,7 +32,7 @@ class Bootstrap:
             """
             {inline}
 
-            from src.research.core.researchers_tools.settings import (
+            from research.core.researchers_tools.settings import (
                 GRAPH_STYLES,
                 PROP_CYCLE,
             )

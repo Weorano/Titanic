@@ -1,6 +1,6 @@
 from .template import SectionCommand
-from ..context import NotebookContext
-from ..structural_elements.jupyter_cell import JupyterCellCreator
+from notebooks.context import NotebookContext
+from notebooks.templates.structural_elements.jupyter_cell import JupyterCellCreator
 
 
 class MainInfoSection(SectionCommand):
@@ -19,7 +19,7 @@ class MainInfoSection(SectionCommand):
 
         ctx.cells.append(
             JupyterCellCreator.create_code_cell(
-                "data.info()"
+                "overview.py.info()"
             )
         )
 

@@ -4,30 +4,32 @@ from typing import Dict, Any, List
 
 import pandas as pd
 
-from .context import NotebookContext
-from .notebook_spec import NotebookSpec
-from .structural_elements.container import ContainerBuilder
-from .structural_elements.python_code import VisualizationCodeStructurer
+from context import NotebookContext
+from registration import NotebookSpecification
+from notebooks.templates.structural_elements.container import ContainerBuilder
+from notebooks.templates.structural_elements.python_code import VisualizationCodeStructurer
+from settings import NOTEBOOKS_DIR
 
 
 class NotebookCreator:
-    def __init__(self, config: Dict[str, Any]):
-        self.config = config
+    def __init__(self, datasets: Dict[str, Any]):
+        self.datasets = datasets
 
     def create(
             self,
-            spec: NotebookSpec,
-            notebook_path: Path,
+            notebook_obj: NotebookSpecification,
             loaded_dataframes: None | Dict[str, pd.DataFrame] = None,
             first_create: bool = True
     ) -> None:
+        notebook_path = NOTEBOOKS_DIR / notebook_obj.name + ".ipynb"
+
         if first_create:
             self._create_empty_notebook(notebook_path)
 
         if loaded_dataframes is None:
             loaded_dataframes = self._load_dfs()
 
-        ctx = self._generate_notebook_structure(loaded_dataframes, spec)
+        ctx = self._generate_notebook_structure(loaded_dataframes, notebook_obj.sections)
 
         self._append_in_notebook_body(notebook_path, ctx)
 
@@ -42,7 +44,7 @@ class NotebookCreator:
     def _load_dfs(self) -> Dict[str, pd.DataFrame]:
         return {
             name: pd.read_csv(path)
-            for name, path in self.config["datasets_paths"].items()
+            for name, path in self.datasets.items()
         }
 
     def _generate_notebook_structure(

@@ -1,7 +1,7 @@
-from ..context import NotebookContext
+from notebooks.context import NotebookContext
 from .template import SectionCommand
-from ..structural_elements.jupyter_cell import JupyterCellCreator
-from ..structural_elements import Templates
+from notebooks.templates.structural_elements.jupyter_cell import JupyterCellCreator
+from notebooks.templates.structural_elements import Templates
 
 
 class IntermediateConclusionSection(SectionCommand):

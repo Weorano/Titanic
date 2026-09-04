@@ -1,7 +1,7 @@
 from typing import List, Dict, Any
 
 from .jupyter_cell import JupyterCellCreator
-from ..style_components.custom_element_border import FrameStrategyFactory
+from notebooks.templates.style_components.custom_element_border import FrameStrategyFactory
 
 
 class ContainerBuilder:

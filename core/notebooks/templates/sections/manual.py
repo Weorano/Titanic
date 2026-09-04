@@ -1,8 +1,8 @@
 import textwrap
 
 from .template import SectionCommand
-from ..context import NotebookContext
-from ..structural_elements.jupyter_cell import JupyterCellCreator
+from notebooks.context import NotebookContext
+from notebooks.templates.structural_elements.jupyter_cell import JupyterCellCreator
 
 
 class ManualSection(SectionCommand):

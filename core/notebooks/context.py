@@ -2,8 +2,8 @@ from dataclasses import dataclass, field
 from typing import Dict, Any, List
 import pandas as pd
 
-from .structural_elements.container import ContainerBuilder
-from .structural_elements.python_code import VisualizationCodeStructurer
+from notebooks.templates.structural_elements.container import ContainerBuilder
+from notebooks.templates.structural_elements.python_code import VisualizationCodeStructurer
 
 
 @dataclass

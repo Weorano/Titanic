@@ -1,9 +1,9 @@
 import textwrap
 
-from ..context import NotebookContext
+from notebooks.context import NotebookContext
 from .template import SectionCommand
-from ..structural_elements.jupyter_cell import JupyterCellCreator
-from ..structural_elements import Templates
+from notebooks.templates.structural_elements.jupyter_cell import JupyterCellCreator
+from notebooks.templates.structural_elements import Templates
 
 
 class EngineeringSection(SectionCommand):
@@ -22,18 +22,18 @@ class EngineeringSection(SectionCommand):
                 content_cells=[
                     JupyterCellCreator.create_code_cell(
                         textwrap.dedent("""
-                            print('Размер до трансформации', data.shape)
+                            print('Размер до трансформации', overview.py.shape)
       
-                            data.head(0)
+                            overview.py.head(0)
     
-                            data[[
+                            overview.py[[
                                 'square_meter_price', 'day_week_publication', 'month_publication',
                                 'year_publication', 'floor_type', 'cityCenters_nearest_km'
                             ]].sample(3)
                             
-                            print('Размер после трансформации', data.shape)
+                            print('Размер после трансформации', overview.py.shape)
 
-                            data.head(0)
+                            overview.py.head(0)
                         """).strip()
                     )
                 ],
